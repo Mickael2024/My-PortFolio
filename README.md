@@ -46,3 +46,4 @@ Par choix, le portfolio ne contient ni logo de technologie, ni inventaire d'outi
 
 `scripts/e2e/check.mjs` et `scripts/e2e/lang.mjs` pilotent Google Chrome (puppeteer-core) sur le build servi en local pour tester la modale projet, les filtres, le menu mobile, la bascule FR/EN et l'absence d'erreurs console.
 # My-PortFolio
+# My-PortFolio

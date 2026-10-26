@@ -1,0 +1,12 @@
+import puppeteer from 'puppeteer-core'
+const [S, id, w = '1440'] = process.argv.slice(2)
+const browser = await puppeteer.launch({ executablePath: '/usr/bin/google-chrome', headless: 'new', args: ['--no-sandbox', '--disable-gpu'] })
+const page = await browser.newPage()
+const width = Number(w)
+await page.setViewport({ width, height: 900, isMobile: width < 500, hasTouch: width < 500 })
+await page.goto('http://localhost:4173/', { waitUntil: 'networkidle0' })
+await page.evaluate((sel) => document.getElementById(sel).scrollIntoView({ behavior: 'instant', block: 'start' }), id)
+await new Promise((r) => setTimeout(r, 1500))
+const el = await page.$(`#${id}`)
+await el.screenshot({ path: `${S}/sec-${id}-${width}.png` })
+await browser.close()
